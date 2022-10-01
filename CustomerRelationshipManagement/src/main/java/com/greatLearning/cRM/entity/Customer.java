@@ -9,12 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
-public class customer {
+public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "firstName")
 	private String firstName;
 
@@ -24,15 +24,23 @@ public class customer {
 	@Column(name = "email")
 	private String email;
 
-	public customer() {
+	public Customer() {
 
 	}
 
-	public customer(String firstName, String lastName, String email) {
+	public Customer(String firstName, String lastName, String email) {
 
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -51,7 +59,7 @@ public class customer {
 		this.lastName = lastName;
 	}
 
-	public String getemail() {
+	public String getEmail() {
 		return email;
 	}
 
@@ -61,6 +69,7 @@ public class customer {
 
 	@Override
 	public String toString() {
-		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
+
 }

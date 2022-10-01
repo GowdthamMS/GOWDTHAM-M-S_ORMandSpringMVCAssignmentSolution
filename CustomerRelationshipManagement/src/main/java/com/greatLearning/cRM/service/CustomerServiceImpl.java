@@ -11,10 +11,10 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.greatLearning.cRM.entity.customer;
+import com.greatLearning.cRM.entity.Customer;
 
 @Repository
-public class customerServiceImpl implements customerService {
+public class CustomerServiceImpl implements CustomerService {
 
 	private SessionFactory sessionFactory;
 
@@ -22,8 +22,8 @@ public class customerServiceImpl implements customerService {
 	private Session session;
 
 	@Autowired
-	customerServiceImpl(SessionFactory sessionFactory) {
-		this.setSessionFactory(sessionFactory);
+	CustomerServiceImpl(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
 		try {
 			session = sessionFactory.getCurrentSession();
 		} catch (HibernateException e) {
@@ -33,13 +33,13 @@ public class customerServiceImpl implements customerService {
 	}
 
 	@Transactional
-	public List<customer> findAll() {
+	public List<Customer> findAll() {
 
 		Transaction tx = session.beginTransaction();
 
 		// find all the records from the database table
 		@SuppressWarnings("unchecked")
-		List<customer> customer = session.createQuery("from Customer").list();
+		List<Customer> customer = session.createQuery("from Customer").list();
 
 		tx.commit();
 
@@ -47,14 +47,14 @@ public class customerServiceImpl implements customerService {
 	}
 
 	@Transactional
-	public customer findById(int id) {
+	public Customer findById(int id) {
 
-		customer customer = new customer();
+		Customer customer = new Customer();
 
 		Transaction tx = session.beginTransaction();
 
 		// find record with Id from the database table
-		customer = session.get(customer.class, id);
+		customer = session.get(Customer.class, id);
 
 		tx.commit();
 
@@ -62,12 +62,12 @@ public class customerServiceImpl implements customerService {
 	}
 
 	@Transactional
-	public void save(customer thecustomer) {
+	public void save(Customer theCustomer) {
 
 		Transaction tx = session.beginTransaction();
 
 		// save transaction
-		session.saveOrUpdate(thecustomer);
+		session.saveOrUpdate(theCustomer);
 
 		tx.commit();
 
@@ -79,7 +79,7 @@ public class customerServiceImpl implements customerService {
 		Transaction tx = session.beginTransaction();
 
 		// get transaction
-		customer customer = session.get(customer.class, id);
+		Customer customer = session.get(Customer.class, id);
 
 		// delete record
 		session.delete(customer);
@@ -88,11 +88,4 @@ public class customerServiceImpl implements customerService {
 
 	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 }

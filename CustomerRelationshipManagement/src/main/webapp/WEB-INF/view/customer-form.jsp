@@ -16,7 +16,7 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
-<title>Save Customer Relationship Management</title>
+<title>Save Customer</title>
 </head>
 
 <body>
@@ -26,34 +26,30 @@
 		<h3>Customer Relationship Management</h3>
 		<hr>
 
-		<p class="h4 mb-4">Customer</p>
+		<p class="h4 mb-4">Save Customer</p>
 
-		<form
-			action="/CustomerRelationshipManagement/Customer/save"
+		<form action="/CustomerRelationshipManagement/customer/save"
 			method="POST">
-			
+
 			<!-- Add hidden form field to handle update -->
-			<input type="hidden" name="id" value="${customer.id}" />
+			<input type="hidden" name="id" value="${Customer.id}" />
 
 			<div class="form-inline">
-				<input type="text" name="firstName"
-					value="${Customer.firstName}"
+				<input type="text" name="firstName" value="${Customer.firstName}"
 					class="form-control mb-4 col-4" placeholder="First Name">
 			</div>
 
 			<div class="form-inline">
 
-				<input type="text" name="lastName"
-					value="${Customer.lastName}"
+				<input type="text" name="lastName" value="${Customer.lastName}"
 					class="form-control mb-4 col-4" placeholder="Last Name">
 
 			</div>
 
 			<div class="form-inline">
 
-				<input type="text" name="email"
-					value="${Customer.email}"
-					class="form-control mb-4 col-4" placeholder="Email">
+				<input type="text" name="email" value="${Customer.email}"
+					class="form-control mb-4 col-4" placeholder="E-mail">
 
 			</div>
 
@@ -62,7 +58,8 @@
 		</form>
 
 		<hr>
-		<a href="/StudentManagementG/student/list">Back to Customer List</a>
+		<a href="/CustomerRelationshipManagement/customer/list">Back to
+			Customer List</a>
 
 
 	</div>
